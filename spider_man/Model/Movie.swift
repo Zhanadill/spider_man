@@ -20,11 +20,10 @@ struct Movie{
 
 var arr: [Movie] = []
 
-
 func bbb(checked: Bool, button: UIButton){
     if checked {
-        button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        button.setImage(UIImage(named: "star.fill"), for: .normal)
     }else{
-        button.setImage(UIImage(systemName: "star"), for: .normal)
+        button.setImage(UIImage(named: "star"), for: .normal)
     }
 }

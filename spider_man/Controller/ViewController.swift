@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     let url = "https://api.themoviedb.org/3/movie/550/similar?"
     var k: IndexPath?
+    var t = 0
     
     
     override func viewDidLoad() {
@@ -25,7 +26,10 @@ class ViewController: UIViewController {
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         requestInfo()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+    }
     
     func requestInfo(){
         let parameters: [String: String] = [
@@ -37,8 +41,8 @@ class ViewController: UIViewController {
             if response.result.isSuccess{
                 //print(response)
                 let movieJSON: JSON = JSON(response.result.value!)
-                for i in 0...9{
-                    let title = movieJSON["results"][i]["title"].stringValue
+                for i in self.t..<self.t+10{
+                    let title =  movieJSON["results"][i]["title"].stringValue
                     let rating = movieJSON["results"][i]["vote_average"].stringValue
                     let release_date = movieJSON["results"][i]["release_date"].stringValue
                     let overview = movieJSON["results"][i]["overview"].stringValue
@@ -46,6 +50,14 @@ class ViewController: UIViewController {
                     let item = Movie(title: title, movieImage: img, rating: rating, release_date: release_date, overview: overview)
                     arr.append(item)
                 }
+                
+                if(self.t + 10 < movieJSON["results"].count){
+                    self.t += 10
+                }else{
+                    self.t = 0
+                }
+                
+                print(arr.count)
                 self.collectionView.reloadData()
             }
         }
@@ -69,6 +81,7 @@ extension ViewController: UICollectionViewDataSource {
         }
         bbb(checked: arr[indexPath.row].checked, button: cell.checkButton)
         cell.aaa(movie: arr[indexPath.row])
+        //print(arr[indexPath.row].title)
         return cell
     }
 }
@@ -78,7 +91,7 @@ extension ViewController: UICollectionViewDataSource {
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 400, height: 300)
+        return CGSize(width: 375, height: 300)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -87,6 +100,13 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if (indexPath.row == arr.count - 1 ) {
+            //print(arr2.count)
+            requestInfo()
+        }
     }
 }
 

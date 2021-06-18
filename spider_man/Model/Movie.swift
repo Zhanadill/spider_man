@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Movie{
+struct Movie: Codable{
     var title: String
     var movieImage: String
     var rating: String
@@ -19,6 +19,7 @@ struct Movie{
 
 
 var arr: [Movie] = []
+
 
 func bbb(checked: Bool, button: UIButton){
     if checked {

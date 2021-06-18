@@ -52,6 +52,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2371E273267A4F6A00021EBE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				23DC4F5426777D98006E8BF4 /* Movie.swift */,
+				2355E61D2677AA2600FF710D /* MyView.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2371E274267A4F7500021EBE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				23DC4F422677674F006E8BF4 /* Main.storyboard */,
+				23DC4F5126777A63006E8BF4 /* MovieCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2371E275267A4F7F00021EBE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				23DC4F5026777A63006E8BF4 /* MovieCell.swift */,
+				2328FE372677C2DC002D5641 /* ViewController.swift */,
+				2328FE392677CC03002D5641 /* ViewController2.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		23DC4F302677674F006E8BF4 = {
 			isa = PBXGroup;
 			children = (
@@ -73,18 +101,14 @@
 		23DC4F3B2677674F006E8BF4 /* spider_man */ = {
 			isa = PBXGroup;
 			children = (
+				2371E275267A4F7F00021EBE /* Controller */,
+				2371E274267A4F7500021EBE /* View */,
+				2371E273267A4F6A00021EBE /* Model */,
 				23DC4F3C2677674F006E8BF4 /* AppDelegate.swift */,
 				23DC4F3E2677674F006E8BF4 /* SceneDelegate.swift */,
-				23DC4F422677674F006E8BF4 /* Main.storyboard */,
 				23DC4F4526776751006E8BF4 /* Assets.xcassets */,
 				23DC4F4726776751006E8BF4 /* LaunchScreen.storyboard */,
 				23DC4F4A26776751006E8BF4 /* Info.plist */,
-				23DC4F5026777A63006E8BF4 /* MovieCell.swift */,
-				23DC4F5126777A63006E8BF4 /* MovieCell.xib */,
-				23DC4F5426777D98006E8BF4 /* Movie.swift */,
-				2355E61D2677AA2600FF710D /* MyView.swift */,
-				2328FE372677C2DC002D5641 /* ViewController.swift */,
-				2328FE392677CC03002D5641 /* ViewController2.swift */,
 			);
 			path = spider_man;
 			sourceTree = "<group>";
